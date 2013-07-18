@@ -25,12 +25,14 @@ eventcount, personlimit, roomlimit, ee, le = int(argv[1]), int(argv[2]), int(arg
 events = [[]]
 roomlist = []
 personlist = [x for x in xrange(personlimit)]
-
+personlist = sorted(personlist)
+modp = eventcount / len(personlist)
+print modp
 for r in xrange(eventcount / 2):
     random.seed()
     t = random.randrange(ee, le, 1)
     r = random.randrange(0, roomlimit,1)
-    p = sorted(personlist.pop())
+    p = personlist[0]
     events.append([p, r, 'I', t])
     t = random.randrange(t, le, 1)
     events.append([p, r, 'O', t])
