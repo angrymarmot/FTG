@@ -1,0 +1,10 @@
+Input Description
+
+On standard console input, you will be given one line of five space-delimited integers: E (for the number of events to generate), V (for the number of visitors), R (for the number of rooms), I (for the time at which the earliest event can occur), and O (for the time at which the last event can occur).
+Output Description
+
+You must output a data-set that follows the input format for the Foot-Traffic Analysis challenge. You must print off E x2 lines (the x2 is because one "event" is defined as both a visitor going into a room and then eventually out of it), only referring to user indices 0 to V (inclusive) and room indices 0 to R (inclusive). Make sure that the time for any and all events are within the range of I and O (inclusive)! Remember that time is defined as the minute during the day, which will always be between 0 and 24H x 60 minutes (1440).
+
+Though your data set can randomly pick the visitor and room index, you must make sure it is logically valid: users that enter a room eventually have to leave it, users cannot enter a room while being in another room, and must always enter a room first before leaving it. Note that we do not enforce the usage of all visitor or room indices: it is possible that with a small E but a large R and V, you only use a small subset of the room and visitor indices.
+
+Make sure to seed your random-number generator! It does not matter if your resulting list is ordered (on any column) or not.
