@@ -1,10 +1,39 @@
-Input Description
+One line of 5 space-delimited integers.
 
-On standard console input, you will be given one line of five space-delimited integers: E (for the number of events to generate), V (for the number of visitors), R (for the number of rooms), I (for the time at which the earliest event can occur), and O (for the time at which the last event can occur).
-Output Description
+E = number of events to generate
+V = number of visitors
+R = number of rooms
+I = time earliest event can occur
+O = time the last event can occur
 
-You must output a data-set that follows the input format for the Foot-Traffic Analysis challenge. You must print off E x2 lines (the x2 is because one "event" is defined as both a visitor going into a room and then eventually out of it), only referring to user indices 0 to V (inclusive) and room indices 0 to R (inclusive). Make sure that the time for any and all events are within the range of I and O (inclusive)! Remember that time is defined as the minute during the day, which will always be between 0 and 24H x 60 minutes (1440).
+constraints:
 
-Though your data set can randomly pick the visitor and room index, you must make sure it is logically valid: users that enter a room eventually have to leave it, users cannot enter a room while being in another room, and must always enter a room first before leaving it. Note that we do not enforce the usage of all visitor or room indices: it is possible that with a small E but a large R and V, you only use a small subset of the room and visitor indices.
+Each visitor can only have one I event in a room at a time.  An O event must take place before another I event another room.
+I event must always come first.
 
-Make sure to seed your random-number generator! It does not matter if your resulting list is ordered (on any column) or not.
+Time < 1440 (number of minutes in a day
+I time must come before O time.
+Output format:
+
+P R I/O T
+0 11 I 347
+
+
+Approach.
+
+Randomly generate E, V I events first.
+Randomly generate E, V O events where O > I but less than 1440 for the time value
+
+eventcount, personlimit, roomlimit, ee, le = argv0, argv1, argv2, argv3, argv4
+events = [[]]
+roomlist = []
+personlist = []
+For r in xrange (eventcount/2):
+    t = rand(ee to 1440)
+    r = rand(0 to roomlimit)
+    p = rand(0 to personlimit)
+    personlist.append(p)
+    roomlist.append(r)
+    events.append([p, r, I, t])
+    t = rand(t to le) (so it's greater than original t)
+    events.append([p, r, O, t])
